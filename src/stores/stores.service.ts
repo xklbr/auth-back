@@ -41,7 +41,7 @@ export class StoresService {
     } catch (error) {
       if (error.code === '23505')
         throw new HttpException(
-          MessageHandler.PRODUCT_ALREADY_EXIST,
+          MessageHandler.STORE_ALREADY_EXIST,
           HttpStatus.BAD_REQUEST,
         );
 
@@ -64,7 +64,7 @@ export class StoresService {
 
   async findOne(id: string) {
     const store = await this.storeRepository.findOneBy({ id });
-    if (!store) throw new NotFoundException(MessageHandler.PRODUCT_NOT_FOUND);
+    if (!store) throw new NotFoundException(MessageHandler.STORE_NOT_FOUND);
 
     return store;
   }
@@ -76,7 +76,7 @@ export class StoresService {
       ...toUpdate,
     });
 
-    if (!store) throw new NotFoundException(MessageHandler.PRODUCT_NOT_FOUND);
+    if (!store) throw new NotFoundException(MessageHandler.STORE_NOT_FOUND);
 
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();

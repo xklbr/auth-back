@@ -15,8 +15,6 @@ export enum MessageHandler {
 
   EMAIL_ALREADY_EXIST = 'Email is all ready exist',
 
-  PRODUCT_ALREADY_EXIST = 'Store is already exist',
-  PRODUCT_NOT_FOUND = 'Store not found',
-  FILE_EMPTY = 'File is empty',
-  FILE_IS_NOT_IMG = 'Make sure that the file sent is an image.',
+  STORE_ALREADY_EXIST = 'Store is already exist',
+  STORE_NOT_FOUND = 'Store not found',
 }
