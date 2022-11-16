@@ -16,57 +16,57 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
-import { ProductsService } from './products.service';
-import { CreateProductDto, UpdateProductDto } from 'src/products/dto';
+import { StoresService } from './stores.service';
+import { CreateStoreDto, UpdateStoreDto } from 'src/stores/dto';
 import { Auth, GetUser } from 'src/auth/decorators';
 import { User } from 'src/user/entities/user.entity';
 import { PaginationDto } from 'src/shared/dtos';
 import { ValidRoles } from 'src/shared/enums';
 
-@ApiTags('products')
-@Controller('products')
-export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+@ApiTags('stores')
+@Controller('stores')
+export class StoresController {
+  constructor(private readonly storesService: StoresService) {}
 
   @Post()
   @Auth(ValidRoles.USER)
-  @ApiOperation({ summary: 'Create a new product' })
+  @ApiOperation({ summary: 'Create a new store' })
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
   })
   @ApiForbiddenResponse({ description: 'Forbidden.' })
   @ApiBearerAuth()
-  create(@Body() createProductDto: CreateProductDto, @GetUser() user: User) {
-    return this.productsService.create(createProductDto, user);
+  create(@Body() createStoreDto: CreateStoreDto, @GetUser() user: User) {
+    return this.storesService.create(createStoreDto, user);
   }
 
   @Get()
-  @ApiOperation({ summary: 'Get all products' })
+  @ApiOperation({ summary: 'Get all stores' })
   findAll(@Query() paginationDto: PaginationDto) {
-    return this.productsService.findAll(paginationDto);
+    return this.storesService.findAll(paginationDto);
   }
 
   @Get(':id')
-  @ApiOperation({ summary: 'Get product by id' })
+  @ApiOperation({ summary: 'Get store by id' })
   findOne(@Param('id') id: string) {
-    return this.productsService.findOne(id);
+    return this.storesService.findOne(id);
   }
 
   @Patch(':id')
   @Auth(ValidRoles.USER)
-  @ApiOperation({ summary: 'Update product' })
+  @ApiOperation({ summary: 'Update store' })
   update(
     @Param('id') id: string,
-    @Body() updateProductDto: UpdateProductDto,
+    @Body() updateStoreDto: UpdateStoreDto,
     @GetUser() user: User,
   ) {
-    return this.productsService.update(id, updateProductDto, user);
+    return this.storesService.update(id, updateStoreDto, user);
   }
 
   @Delete(':id')
   @Auth(ValidRoles.USER)
-  @ApiOperation({ summary: 'Disable products' })
+  @ApiOperation({ summary: 'Disable stores' })
   remove(@Param('id') id: string) {
-    return this.productsService.remove(id);
+    return this.storesService.remove(id);
   }
 }

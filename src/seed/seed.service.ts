@@ -6,10 +6,10 @@ import {
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
-import { Product } from 'src/products/entities';
-import { ProductsService } from 'src/products/products.service';
+import { Store } from 'src/stores/entities';
+import { StoresService } from 'src/stores/stores.service';
 
-import { seedUsersData, seedProductsData } from './data';
+import { seedUsersData, seedStoresData } from './data';
 import { MessageHandler } from 'src/shared/enums';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/user/entities/user.entity';
@@ -17,13 +17,13 @@ import { User } from 'src/user/entities/user.entity';
 @Injectable()
 export class SeedService {
   constructor(
-    @InjectRepository(Product)
-    private readonly productRepository: Repository<Product>,
+    @InjectRepository(Store)
+    private readonly storeRepository: Repository<Store>,
 
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
 
-    private readonly productsService: ProductsService,
+    private readonly storesService: StoresService,
   ) {}
 
   private readonly logger = new Logger('SEED');
@@ -32,12 +32,12 @@ export class SeedService {
     await this.deleteTables();
     const adminUser = await this.insertUsers();
 
-    await this.insertNewProducts(adminUser);
+    await this.insertNewStores(adminUser);
     return 'Seed - Insert executed!';
   }
 
   private async deleteTables() {
-    await this.deleteAllProducts();
+    await this.deleteAllStores();
 
     const queryBuilder = this.userRepository.createQueryBuilder();
     await queryBuilder.delete().where({}).execute();
@@ -57,15 +57,15 @@ export class SeedService {
     return dbUsers[0];
   }
 
-  private async insertNewProducts(user: User) {
-    await this.deleteAllProducts();
+  private async insertNewStores(user: User) {
+    await this.deleteAllStores();
 
-    const products = seedProductsData.products;
+    const stores = seedStoresData.stores;
 
     const insertPromises = [];
 
-    products.forEach((product) =>
-      insertPromises.push(this.productsService.create(product, user)),
+    stores.forEach((store) =>
+      insertPromises.push(this.storesService.create(store, user)),
     );
 
     await Promise.all(insertPromises);
@@ -73,8 +73,8 @@ export class SeedService {
     return true;
   }
 
-  async deleteAllProducts() {
-    const query = this.productRepository.createQueryBuilder('product');
+  async deleteAllStores() {
+    const query = this.storeRepository.createQueryBuilder('store');
 
     try {
       return await query.delete().where({}).execute();

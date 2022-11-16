@@ -1,2 +1,2 @@
 export { seedUsersData } from './seed-users';
-export { seedProductsData } from './seed-products';
+export { seedStoresData } from './seed-stores';

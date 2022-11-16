@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
 
-import { Product } from 'src/products/entities/product.entity';
+import { Store } from 'src/stores/entities/store.entity';
 import { ValidRoles } from 'src/shared/enums';
 import { ValidStatus } from 'src/shared/enums/valid.status';
 
@@ -29,11 +29,7 @@ export class User {
 
   @Exclude({ toPlainOnly: true })
   @Column('text')
-  name: string;
-
-  @Exclude({ toPlainOnly: true })
-  @Column('text')
-  lastname: string;
+  fullName: string;
 
   @Column('text', {
     nullable: true,
@@ -49,14 +45,13 @@ export class User {
   })
   roles: string[];
 
-  @OneToMany(() => Product, (product) => product.user)
-  product: Product;
+  @OneToMany(() => Store, (store) => store.user)
+  store: Store;
 
   @BeforeInsert()
   checkFieldBeforeInsert() {
     this.email = this.email.toLocaleLowerCase().trim();
-    this.name = this.name.toLocaleLowerCase().trim();
-    this.lastname = this.lastname.toLocaleLowerCase().trim();
+    this.fullName = this.fullName.toLocaleLowerCase().trim();
   }
 
   @BeforeUpdate()

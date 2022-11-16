@@ -6,6 +6,3 @@ export const RawHeaders = createParamDecorator(
     return req.rawHeaders;
   },
 );
-
-//uso @RawHeader() rawHeaders: string[]
-// best use @Headers() headers: IncomingHttpHeaders

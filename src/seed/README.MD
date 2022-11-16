@@ -1,48 +1,33 @@
 # Seed
 
-Run the seed to delete and create all database information such as users, products and images.
+Run the seed to delete and create all database information such as users, stores and images.
 
 1. You need to have the fill information ready in the Seed module data folder.
 2. Make sure all the fields, match your entities.
-3. Make a get request on a rest client to the apiUrl/seed end-point.
+3. Make a get request on integrate Swagger **(Seed)** or a rest client to the **apiUrl/seed** end-point.
+4. The first user in the seed list has the admin role, so you can use his credentials to get write permissions. Even if the values contain uppercase letters, everything in the database is stored in lowercase. Remember this to log in.
 
-> Create as many **users** and **products** as you need by duplicating the objects that represent them.
+> Create as many **users** and **stores** as you need by duplicating the objects that represent them.
 
 Examples:
 
-**Products**
+**Stores**
 
 ```TypeScript
-interface SeedProduct {
+interface SeedStore {
   title: string;
-  description: string;
-  price: number;
-  stock: number;
-  sizes: ValidSizes[];
-  category: ValidCategory;
-  gender: ValidGender[];
-  images: string[];
+  address: string;
 }
 
-type ValidSizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL';
-type ValidCategory = 'Category_1' | 'Category_2' | 'Category_3';
-type ValidGender = 'men' | 'women' | 'kid' | 'unisex';
-
-interface SeedProductsData {
-  products: SeedProduct[];
+interface SeedStoresData {
+  stores: SeedStore[];
 }
 
-export const seedProductsData: SeedProductsData = {
-  products: [
+export const seedStoresData: SeedStoresData = {
+  stores: [
     {
-      title: 'Title product',
-      description: 'Description',
-      images: ['image_1.jpg', 'image_2.png'],
-      stock: 10,
-      price: 100,
-      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      category: 'Category',
-      gender: ['unisex'],
+      title: 'Title Store',
+      address: 'Address',
     },
   ]
 }

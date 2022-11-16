@@ -12,6 +12,11 @@ import { MessageHandler } from 'src/shared/enums';
 
 export class CreateUserDto {
   @ApiProperty()
+  @IsString()
+  @MinLength(1)
+  fullName: string;
+
+  @ApiProperty()
   @IsEmail()
   email: string;
 
@@ -23,14 +28,4 @@ export class CreateUserDto {
     message: MessageHandler.PASSWORD_INVALID,
   })
   password: string;
-
-  @ApiProperty()
-  @IsString()
-  @MinLength(1)
-  name: string;
-
-  @ApiProperty()
-  @IsString()
-  @MinLength(1)
-  lastname: string;
 }

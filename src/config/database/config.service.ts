@@ -18,7 +18,7 @@ export class DatabaseConfigService {
   }
 
   get username(): string {
-    return this.configService.get<string>('DATABASE_USERNAME');
+    return this.configService.get<string>('DATABASE_USER');
   }
 
   get password(): string {

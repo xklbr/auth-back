@@ -25,7 +25,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  private readonly logger = new Logger('ProductsService');
+  private readonly logger = new Logger('StoresService');
 
   async createAuth(createUserDto: CreateUserDto) {
     try {
@@ -57,7 +57,7 @@ export class AuthService {
     const { password, email } = loginUserDto;
     const user = await this.userRepository.findOne({
       where: { email },
-      select: { email: true, password: true, id: true },
+      select: { email: true, password: true, id: true, fullName: true },
     });
 
     if (!user)
