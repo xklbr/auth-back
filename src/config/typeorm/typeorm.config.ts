@@ -18,9 +18,6 @@ const config: ConnectionOptions & TypeOrmModuleOptions = {
   migrations: ['src/database/migrations/**/*{.ts,.js}'],
   seeds: ['src/database/seeds/*{.ts,.js}'],
   factories: [],
-  // cli: {
-  //   migrationsDir: 'src/database/migrations',
-  // },
 };
 
 export default config;

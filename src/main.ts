@@ -20,7 +20,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('API Auth App')
-    .setDescription('Authetication app')
+    .setDescription('Auth app')
     .setVersion('1.0')
     .addTag('auth')
     .addBearerAuth()
@@ -36,6 +36,6 @@ async function bootstrap() {
 
   app.enableCors();
   await app.listen(process.env.PORT);
-  logger.log(`App running on port ${process.env.PORT}`);
+  logger.log(`App running on port ${process.env.PORT || 8080}`);
 }
 bootstrap();
