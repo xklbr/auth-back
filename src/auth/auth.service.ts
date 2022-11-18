@@ -57,7 +57,14 @@ export class AuthService {
     const { password, email } = loginUserDto;
     const user = await this.userRepository.findOne({
       where: { email },
-      select: { email: true, password: true, id: true, fullName: true },
+      select: {
+        email: true,
+        password: true,
+        id: true,
+        fullName: true,
+        roles: true,
+        status: true,
+      },
     });
 
     if (!user)
@@ -65,6 +72,8 @@ export class AuthService {
 
     if (!bcrypt.compareSync(password, user.password))
       throw new UnauthorizedException(MessageHandler.UNAUTHORIZED_CREDENTIALS);
+
+    delete user.password;
 
     return {
       ...user,
