@@ -18,8 +18,7 @@
     "migration:create": "typeorm migration:create",
     "migration:generate": "typeorm migration:generate",
     "migration:run": "typeorm migration:run -t each",
-    "migration:revert": "typeorm migration:revert",
-    "prepare": "yarn && yarn build"
+    "migration:revert": "typeorm migration:revert"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
