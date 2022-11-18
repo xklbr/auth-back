@@ -32,4 +32,8 @@ export class DatabaseConfigService {
   get logger(): string {
     return this.configService.get<string>('DATABASE_LOGGER');
   }
+
+  get ssl(): boolean {
+    return this.configService.get<string>('SSL') === 'true';
+  }
 }
