@@ -8,7 +8,8 @@ import {
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
 
-import { Store } from 'src/stores/entities/store.entity';
+import { Store } from 'src/stores/entities';
+import { Recipe } from 'src/recipes/entities';
 import { ValidRoles } from 'src/shared/enums';
 import { ValidStatus } from 'src/shared/enums/valid.status';
 
@@ -47,6 +48,9 @@ export class User {
 
   @OneToMany(() => Store, (store) => store.user)
   store: Store;
+
+  @OneToMany(() => Recipe, (recipe) => recipe.user)
+  recipe: Recipe;
 
   @BeforeInsert()
   checkFieldBeforeInsert() {

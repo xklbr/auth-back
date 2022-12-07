@@ -19,8 +19,8 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('API Auth App')
-    .setDescription('Auth app')
+    .setTitle('NestJS TypeOrm PostgreSQL API')
+    .setDescription('NTP API')
     .setVersion('1.0')
     .addTag('auth')
     .addBearerAuth()

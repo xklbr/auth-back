@@ -17,4 +17,7 @@ export enum MessageHandler {
 
   STORE_ALREADY_EXIST = 'Store is already exist',
   STORE_NOT_FOUND = 'Store not found',
+
+  RECIPE_ALREADY_EXIST = 'Recipe is already exist',
+  RECIPE_NOT_FOUND = 'Recipe not found',
 }
