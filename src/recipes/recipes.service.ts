@@ -37,7 +37,7 @@ export class RecipesService {
       });
 
       await this.recipeRepository.save(recipe);
-      return { ...recipe };
+      return recipe;
     } catch (error) {
       if (error.code === '23505')
         throw new HttpException(

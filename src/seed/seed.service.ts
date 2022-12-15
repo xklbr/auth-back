@@ -19,6 +19,9 @@ import { User } from 'src/user/entities/user.entity';
 @Injectable()
 export class SeedService {
   constructor(
+    private readonly storesService: StoresService,
+    private readonly recipesService: RecipesService,
+
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
 
@@ -27,9 +30,6 @@ export class SeedService {
 
     @InjectRepository(Recipe)
     private readonly recipeRepository: Repository<Recipe>,
-
-    private readonly storesService: StoresService,
-    private readonly recipesService: RecipesService,
   ) {}
 
   private readonly logger = new Logger('SEED');
@@ -54,10 +54,13 @@ export class SeedService {
   private async insertUsers() {
     const seedUsers = seedUsersData.users;
 
+    const users: User[] = [];
+
     seedUsers.map((user) => {
       user.password = bcrypt.hashSync(user.password, 10);
       user.email = user.email.toLocaleLowerCase().trim();
       this.userRepository.create(user);
+      users.push(this.userRepository.create(user));
     });
 
     const dbUsers = await this.userRepository.save(seedUsers);
@@ -67,13 +70,19 @@ export class SeedService {
 
   private async insertNewStores(user: User) {
     await this.deleteAllStores();
+    await this.deleteAllRecipes();
 
     const stores = seedStoresData.stores;
+    const recipes = seedRecipesData.recipes;
 
     const insertPromises = [];
 
     stores.forEach((store) =>
       insertPromises.push(this.storesService.create(store, user)),
+    );
+
+    recipes.forEach((recipe) =>
+      insertPromises.push(this.recipesService.create(recipe, user)),
     );
 
     await Promise.all(insertPromises);
