@@ -53,8 +53,8 @@ export const seedRecipesData: SeedRecipesData = {
         'https://res.cloudinary.com/dskdfhycu/image/upload/v1670432727/recipes-app/nlsz0w5vllzvkqutuvum.png',
     },
     {
-      title: 'pasta con',
-      mainTitle: 'camarones',
+      title: 'pasta',
+      mainTitle: 'con nuez',
       portion_size: '1 ración',
       preparation_minutes: '30',
       difficulty: 'media',
@@ -101,8 +101,8 @@ export const seedRecipesData: SeedRecipesData = {
         'https://res.cloudinary.com/dskdfhycu/image/upload/v1670432725/recipes-app/hvk15oxelvc8t1blcujo.png',
     },
     {
-      title: 'plateada',
-      mainTitle: 'a la olla',
+      title: 'picada',
+      mainTitle: 'montecristo',
       portion_size: '1 ración',
       preparation_minutes: '25',
       difficulty: 'media',
@@ -126,7 +126,7 @@ export const seedRecipesData: SeedRecipesData = {
     },
     {
       title: 'ensalada',
-      mainTitle: 'mediterranea',
+      mainTitle: 'de oriente',
       portion_size: '1 ración',
       preparation_minutes: '16',
       difficulty: 'fácil',
@@ -221,8 +221,8 @@ export const seedRecipesData: SeedRecipesData = {
         'https://res.cloudinary.com/dskdfhycu/image/upload/v1670427781/recipes-app/lzwkfsd9tzhesd8l9luc.png',
     },
     {
-      title: 'hamburguesa de',
-      mainTitle: 'res',
+      title: 'classic',
+      mainTitle: 'burguer',
       portion_size: '1 ración',
       preparation_minutes: '25',
       difficulty: 'media',
@@ -245,8 +245,8 @@ export const seedRecipesData: SeedRecipesData = {
         'https://res.cloudinary.com/dskdfhycu/image/upload/v1670434354/recipes-app/qkjficbtrvymrookluh6.png',
     },
     {
-      title: 'sanduche de',
-      mainTitle: 'cordero',
+      title: 'lamb',
+      mainTitle: 'sandwich',
       portion_size: '1 ración',
       preparation_minutes: '25',
       difficulty: 'media',
