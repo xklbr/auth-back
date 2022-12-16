@@ -125,8 +125,8 @@ export const seedRecipesData: SeedRecipesData = {
         'https://res.cloudinary.com/dskdfhycu/image/upload/v1670432725/recipes-app/ii6idgqkfqz3hjeqbkdw.png',
     },
     {
-      title: 'ensalada',
-      mainTitle: 'de oriente',
+      title: 'oriente',
+      mainTitle: 'salad',
       portion_size: '1 ración',
       preparation_minutes: '16',
       difficulty: 'fácil',
@@ -137,8 +137,8 @@ export const seedRecipesData: SeedRecipesData = {
         'https://res.cloudinary.com/dskdfhycu/image/upload/v1670432725/recipes-app/ruaio18y3jkltvyr9osz.png',
     },
     {
-      title: 'ensalada',
-      mainTitle: 'mix',
+      title: 'mix',
+      mainTitle: 'salad',
       portion_size: '1 ración',
       preparation_minutes: '15',
       difficulty: 'fácil',
