@@ -7,6 +7,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    runs:
+      using: 'node16'
+      main: 'main.ts'
     steps:
       - uses: actions/checkout@v2
         with:
